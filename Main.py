@@ -149,6 +149,12 @@ class Board:
     def cant_continue(self):
         return self.empty_tiles() == [] and self.immediate_merge() is False
 
+    def check_won(self):
+        for i in range(4):
+            for j in range(4):
+                if self.board[i][j].value == 2048:
+                    return True
+        return False
     def print_board(self):
         print("-------------")
         for i in self.board:
@@ -177,6 +183,9 @@ def game():
         b.print_board()
         if b.cant_continue():
             res = 0
+            break
+        if b.check_won():
+            res = 1
             break
     if res == 1:
         print("Congratulations! You Won!")

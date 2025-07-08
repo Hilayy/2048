@@ -13,6 +13,7 @@ class Board:
     def __init__(self):
         self.board = [[None for _ in range(4)] for _ in range(4)]
         self.create_block()
+        self.score = 0
 
     def create_block(self):
         pos = random.choice(self.empty_tiles())
@@ -143,6 +144,7 @@ class Board:
     def merge_blocks(self, t1, t2):
         self.board[t2[0]][t2[1]].value *= 2
         self.board[t1[0]][t1[1]] = None
+        self.score += self.board[t2[0]][t2[1]].value
 
     def cant_continue(self):
         return self.empty_tiles() == [] and self.immediate_merge() is False
@@ -160,12 +162,16 @@ class Board:
             print('|' + s)
         print("-------------")
 
+    def announce_score(self):
+        print(f"score:{self.score}")
+
 
 def game():
     res = None
     b = Board()
-    b.print_board()
     while True:
+        b.announce_score()
+        b.print_board()
         b.make_move()
         b.create_block()
         b.print_board()

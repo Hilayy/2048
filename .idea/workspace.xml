@@ -64,11 +64,20 @@
       <option name="project" value="LOCAL" />
       <updated>1751944857005</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="implemented merging mechanics, currently only for upward movement">
+      <option name="closed" value="true" />
+      <created>1751950846639</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1751950846639</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="starting" />
-    <option name="LAST_COMMIT_MESSAGE" value="starting" />
+    <MESSAGE value="implemented merging mechanics, currently only for upward movement" />
+    <option name="LAST_COMMIT_MESSAGE" value="implemented merging mechanics, currently only for upward movement" />
   </component>
 </project>

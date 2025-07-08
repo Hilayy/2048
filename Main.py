@@ -13,8 +13,8 @@ class Board:
     def __init__(self):
         self.board = [[None for _ in range(4)] for _ in range(4)]
         self.create_block()
-
-
+        self.create_block()
+        self.create_block()
 
     def create_block(self):
         pos = random.choice(self.empty_tiles())
@@ -41,12 +41,14 @@ class Board:
                         last = [i, j]
                         while True and last[0] > 0:
                             if isinstance(self.board[last[0] - 1][last[1]], Block):
+                                if self.board[i][j].value == self.board[last[0] - 1][last[1]].value:
+                                    self.merge_blocks([i, j], [last[0] - 1, last[1]])
+                                    last = None
                                 break
                             last[0] -= 1
-                        pos = last
-                        print(pos)
-                        self.move_block([i, j], last)
 
+                        if last:
+                            self.move_block([i, j], last)
 
     def move_block(self, current, new):
         x = copy.deepcopy(self.board[current[0]][current[1]])
@@ -55,15 +57,9 @@ class Board:
         self.board[new[0]][new[1]] = x
         self.print_board()
 
-
-
-
-
-
-
-
-
-
+    def merge_blocks(self, t1, t2):
+        self.board[t2[0]][t2[1]].value *= 2
+        self.board[t1[0]][t1[1]] = None
 
     def print_board(self):
         print("-------------")
@@ -82,3 +78,4 @@ class Board:
 b = Board()
 b.print_board()
 b.make_move()
+b.print_board()

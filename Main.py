@@ -152,8 +152,9 @@ class Board:
     def check_won(self):
         for i in range(4):
             for j in range(4):
-                if self.board[i][j].value == 2048:
-                    return True
+                if isinstance(self.board[i][j], Block):
+                    if self.board[i][j].value == 2048:
+                      return True
         return False
     def print_board(self):
         print("-------------")
